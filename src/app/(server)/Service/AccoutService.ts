@@ -1,9 +1,12 @@
 // class accoutservice handles CURD actions for the account mongoDB collection, use mongoose to interact with the database
 
 import mongoose from "mongoose";
-import AccountModel from "../_models/AccountModel";
+import AccountModel from "../models/AccountModel";
+
+const ObjectId = mongoose.Types.ObjectId;
 
 export default class AccountService {
+    // const ObjectId = mongoose.Types.ObjectId;
     // create a new account
     async createAccount(account: Account) {
         const accountExist = await AccountModel.findOne({ email: account.email });
@@ -30,11 +33,23 @@ export default class AccountService {
 
     // update account by id
     async updateAccount(id:string, account: Account) {
-        return await AccountModel.findByIdAndUpdate(id, account, { new: true });
+        return await AccountModel.findByIdAndUpdate(
+                                    {_id : new ObjectId(id)},
+                                    {roles : account.roles},
+                                    { new: true });
+    }
+
+    async updateRoles(id:string, roles: string[]) {
+        return await AccountModel.findByIdAndUpdate(
+                                    {_id : new ObjectId(id)},
+                                    {roles : roles},
+                                    { new: true });
     }
 
     // delete account by id
-    async deleteAccount(id: string) {
-        return await AccountModel.findByIdAndDelete(id);
+    async deleteAccount(id: string): Promise<any> {
+        return await AccountModel.findByIdAndDelete({
+            _id: new ObjectId(id)
+        });
     }
 }

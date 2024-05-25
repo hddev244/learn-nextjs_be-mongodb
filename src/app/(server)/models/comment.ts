@@ -1,9 +1,10 @@
 import mongoose, { Schema, model, models } from "mongoose";
 
 const commentSchema = new Schema({
-    _id : {
-        type: String,
-        required: false
+    user : {
+        type: Schema.Types.ObjectId,
+        ref: 'Account',
+        required: true
     },
     name : {
         type: String,
@@ -22,9 +23,10 @@ const commentSchema = new Schema({
         required: true
     },
     date : {
-        type: Date,
-        default: Date
+        type: Date || String,
+        default: Date 
     }
+
 }, { timestamps: true });
 
 const CommentModel = mongoose.model('Comment', commentSchema);

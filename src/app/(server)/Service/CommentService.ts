@@ -1,5 +1,5 @@
-import CommentModel from "../_models/comment";
-import dbConnect from "../_libs/mongodb";
+import CommentModel from "../models/comment";
+import dbConnect from "../libs/mongodb";
 import Comment from "../types/Comment";
 import ResponseType from "../types/ResponseType";
 

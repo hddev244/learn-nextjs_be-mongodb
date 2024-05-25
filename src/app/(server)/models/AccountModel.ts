@@ -1,21 +1,19 @@
 import mongoose, { Schema } from "mongoose";
 
 const accountSchema = new Schema({
-    _id : {
-        type: String,
-        required: false
-    },
     roles : {
         type: Array,
         required: true
     },
     name : {
         type: String,
+        unique  : true,
         required: true
     },
     email : {
         type: String,
-        required: true
+        required: true,
+        unique  : true
     },
     password : {
         type: String,

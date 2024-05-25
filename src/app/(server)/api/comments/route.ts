@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import dbConnect from "../../_libs/mongodb";
-import CommentModel from "../../_models/comment";
+import dbConnect from "../../libs/mongodb";
+import CommentModel from "../../models/comment";
 import CommentService from "../../Service/CommentService";
 
 const service = new CommentService();
