@@ -2,6 +2,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import AccountService from "../../Service/AccoutService";
+import { Types } from "mongoose";
 
 const service = new AccountService();
 
