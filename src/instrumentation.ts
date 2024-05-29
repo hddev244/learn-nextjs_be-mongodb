@@ -1,4 +1,5 @@
-import dbConnect from "./app/(server)/libs/mongodb";
+import dbConnect from "./server/libs/mongodb";
+
 export async function register() {
     await dbConnect();
 }
