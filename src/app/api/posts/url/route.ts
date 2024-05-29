@@ -1,4 +1,5 @@
-import { PostService } from "@/(server)/Service/PostService";
+
+import { PostService } from "@/server/Service/PostService";
 import { NextRequest, NextResponse } from "next/server";
 
 const service = new PostService();

@@ -3,19 +3,21 @@ import type { NextPage } from "next";
 
 const  Page: NextPage = async () => {
   const {data ,errMsg} = await getPosts();
-  const posts = data;
+  const post = data;
   if(errMsg){
     return <div>{errMsg}</div>
   }
+
+  if(!post){
+    return <div>Loading...</div>
+  }
+
+  const content = post.content;
+
   return (
     <>
-      {posts && posts.map(post => (
-        <div key={post._id}>
-          <h1>{post.title}</h1>
-          <p>{post.content}</p>
-          <p>{post.description}</p>
+        <div dangerouslySetInnerHTML={{__html: content}}>
         </div>
-      ))}
     </>
   )
 }
